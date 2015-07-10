@@ -1,0 +1,20 @@
+{
+  "name": "Loader",
+  "main": "Loader.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/andrsnn/Loader",
+  "authors": [
+    "aanderson <aidananderson@projectpals.com>"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
