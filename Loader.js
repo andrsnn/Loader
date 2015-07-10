@@ -1,7 +1,7 @@
 define(function(require){
 	var Loader = function(){
 		this.dependencies = {};
-		Loader.prototype.load = function(name){
+		Loader.prototype.require = function(name){
 			require(name, function(){
 				debugger;
 			});
