@@ -14,7 +14,6 @@
     //"**/.*",
     ".bower.json",
     ".DS_STORE",
-    
     "node_modules",
     "bower_components",
     "test",
