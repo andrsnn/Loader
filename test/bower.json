@@ -1,0 +1,32 @@
+{
+  "name": "mocha-requirejs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/andrsnn/mocha-requirejs",
+  "authors": [
+    "andrsnn <aidan.anderson.359@my.csun.edu>"
+  ],
+  "description": "boilerplate for mocha-requirejs",
+  "main": "main.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "should": "~7.0.2",
+    "mocha": "~2.2.5",
+    "chai": "~3.2.0",
+    "chai-jquery": "~2.0.0",
+    "backbone": "~1.2.1",
+    "requirejs": "~2.1.19"
+  }
+}

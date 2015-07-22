@@ -1,0 +1,9 @@
+{
+	"dependencies":{
+		"jquery":"jquery",
+		"backbone":"backbone",
+		"outOfContextModule1":"/test/testSubModules/outOfContextModule1.js",
+		"outOfContextModule2":"/test/testSubModules/outOfContextModule2.js"	
+	}
+	
+}
