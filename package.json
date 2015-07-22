@@ -1,0 +1,32 @@
+{
+  "name": "asyncloader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Loader.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrsnn/Loader.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrsnn/Loader/issues"
+  },
+  "homepage": "https://github.com/andrsnn/Loader#readme",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-requirejs": "^0.4.4",
+    "grunt-http-server": "^1.4.0",
+    "grunt-mocha-test": "^0.12.7",
+    "mocha": "^2.2.5",
+    "requirejs": "^2.1.19",
+    "should": "^7.0.2"
+  }
+}
