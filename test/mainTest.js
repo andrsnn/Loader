@@ -111,6 +111,28 @@ describe('AsyncLoader',function(){
 		
 	});
 
+	it('The load/go methods should load consistently even on multiple calls',function(done){
+		var load = new loader();
+		load.load("/test/testSubModules/module4.js").with(['jquery','backbone','/test/testSubModules/outOfContextModule1.js','/test/testSubModules/outOfContextModule2.js']);
+		load.load("/test/testSubModules/modulesWithDeps/module5.js").with(['jquery','backbone','/test/testSubModules/outOfContextModule1.js','/test/testSubModules/outOfContextModule2.js']);
+		load.go(function(module4,module5){
+			module4.should.have.property('Backbone').and.be.a.Object();
+			module4.should.have.property('jquery').and.be.a.Function();
+			module4.should.have.property('mod1').and.be.a.Object();
+			module4.should.have.property('mod2').and.be.a.Object();
+			module4.mod1.should.have.property('context').and.be.exactly("outOfContextModule1");
+			module4.mod2.should.have.property('context').and.be.exactly("outOfContextModule2");
+
+			module5.should.have.property('Backbone').and.be.a.Object();
+			module5.should.have.property('jquery').and.be.a.Function();
+			module5.should.have.property('mod1').and.be.a.Object();
+			module5.should.have.property('mod2').and.be.a.Object();
+			module5.mod1.should.have.property('context').and.be.exactly("outOfContextModule1");
+			module5.mod2.should.have.property('context').and.be.exactly("outOfContextModule2");
+			done();
+		});
+	});
+
 	it('The load/go methods should load dependencies from public file when given a path in the with method',function(done){
 		var load = new loader();
 
@@ -141,6 +163,14 @@ describe('AsyncLoader',function(){
 			module5.mod2.should.have.property('context').and.be.exactly("outOfContextModule2");
 			done();
 		});
+	});
+
+	//fail
+	it('The load/go methods should load dependencies with different provided arguments',function(done){
+		var load = new loader();
+		load.load("/test/testSubModules/module4.js", '/test/testSubModules/modulesWithDeps/module5.js').with(['jquery','backbone','/test/testSubModules/outOfContextModule1.js','/test/testSubModules/outOfContextModule2.js'],null);
+		
+		done();
 	});
 
 

@@ -32,7 +32,9 @@ define(['jquery', 'require','underscore'],function($, require, _){
 
 	    AsyncLoader.prototype.require = function(){
 	    	var deps = Array.prototype.slice.call(arguments);
+	    	
 	    	var dfd = $.Deferred();
+
 	    	deps.forEach(function(elem){
 	    		requireFileNames.push(elem);
 	    		requireDfdList.push(dfd);
@@ -227,7 +229,7 @@ define(['jquery', 'require','underscore'],function($, require, _){
 	    	var args = Array.prototype.slice.call(arguments);
 	    	
 	    	if (args.length == 0){
-	    		//!!!! ONLY WORKS FOR A SINGLE MODULE IN FILENAMESTOLOAD
+	    		
 	    		currDfd = $.Deferred();
 	    		ori = currDfd;
 	    		currDfd = currDfd.promise();
@@ -327,7 +329,21 @@ define(['jquery', 'require','underscore'],function($, require, _){
 	    			});
 	    	}
 	    	else {
-	    		pushArgs(args);
+	    		//check for nested dependencies.json or null (for default)
+	    		var argNull = false;
+	    		for (var i = 0; i < args.length; i++) {
+	    			if (args[i] == null){
+	    				argNull = true;
+	    				break;
+	    			}
+	    		}
+	    		if (argNull){
+	    			
+	    		}
+	    		else {
+	    			pushArgs(args);	
+	    		}
+	    		
 	    	}
 
 	    	
@@ -353,9 +369,9 @@ define(['jquery', 'require','underscore'],function($, require, _){
 		    	});
 
 		    	var all = commonDeps.concat(fileNames);
-
 		    	
-
+		    	
+		    	
 		    	//each module should return a factory
 		    	
 	    		require(all, function(){
@@ -363,6 +379,7 @@ define(['jquery', 'require','underscore'],function($, require, _){
 		    		var resolvedModules = Array.prototype.slice.call(arguments);
 		    		
 		    		var dependencies = resolvedModules.splice(0,(resolvedModules.length - fileNamesToLoad.length));
+
 		    		//fileNamesToLoad.length-1
 		    		
 		    		//dependencies.length should equal length of uniqueDeps
