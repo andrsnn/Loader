@@ -20,6 +20,7 @@ define(['jquery', 'require','underscore'],function($, require, _){
 	    var currContext = null;
 
 	    var fileNamesToLoad = [];
+	    var cssFileNamesToLoad = [];
 	    var uniqueDeps = {};
 
 	    var currDfd = null;
@@ -198,11 +199,30 @@ define(['jquery', 'require','underscore'],function($, require, _){
 	    	var args = Array.prototype.slice.call(arguments);
 
 	    	for (var i = 0; i < args.length; i++) {
+
 	    		fileNamesToLoad.push(new fileNameModel(args[i]));
 	    	}
 
 	    	
 	    	return this;
+	    }
+
+	    AsyncLoader.prototype.loadCSS = function(){
+	    	var args = Array.prototype.slice.call(arguments);
+	    	var cb = args.pop();
+
+	    	for (var i = 0; i < args.length; i++) {
+	    		var link = document.createElement("link");
+	    		link.type = "text/css";
+		    	link.rel = "stylesheet";
+		    	link.href = args[i];		
+
+	    		cssFileNamesToLoad.push(link);
+	    	}
+
+	    	
+		    
+		    cb && cb.apply(cb,cssFileNamesToLoad);
 	    }
 
 	    //accepts array of 

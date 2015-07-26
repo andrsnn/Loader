@@ -222,6 +222,16 @@ describe('AsyncLoader',function(){
 
 	});
 
+	it('The loadCSS method should load multiple css files given paths', function(){
+		var load = new loader();
+		load.loadCSS("/test/testSubModules/test.css","/test/testSubModules/test2.css",function(css1,css2){
+			var head = document.querySelector('head');
+			head.appendChild(css1);
+			head.appendChild(css2);
+		});
+		
+	});
+
 
 
 });
