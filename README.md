@@ -1,6 +1,8 @@
 ##AsyncLoader
 Lazy Load Requirejs modules.  Perform Dependency Injection on out-of-content modules given a JSON file with paths, or path.
 
+Load CSS stylesheets given path.
+
 TODO:
 Allow DI given Object.
 
